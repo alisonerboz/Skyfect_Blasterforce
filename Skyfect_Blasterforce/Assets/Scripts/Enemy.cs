@@ -1,13 +1,16 @@
 using UnityEngine;
-
 public class Enemy : MonoBehaviour
 {
-    Rigidbody2D _rb;
+    private Rigidbody2D _rb;
     public float speed;
-    GameManager _control; 
-    AudioSource _boomSound;
-    
-    void Start()
+    private GameManager _control;
+    private AudioSource _boomSound;
+
+    private PlayerHealth _playerHealth;
+    //private int _crushDamegeToPlayer = 25;
+    private EnemyHealth _enemyHealth;
+    //private int _crushDamegeToMe = 50;
+    private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _boomSound = GetComponent<AudioSource>();
@@ -28,12 +31,13 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _boomSound.Play();
-            Destroy(gameObject);
+            _playerHealth.PlayerTakeDamage(25);
+            _enemyHealth.EnemyTakeDamage(50);
         }
         if (other.CompareTag("PlayerLazer"))
         {
             _boomSound.Play();
-            Destroy(gameObject);
+            Destroy(gameObject,0.1f);
         }
     }
 }
