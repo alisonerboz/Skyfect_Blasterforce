@@ -6,14 +6,16 @@ public class Enemy : MonoBehaviour
     private GameManager _control;
     private AudioSource _boomSound;
 
-    private PlayerHealth _playerHealth;
-    //private int _crushDamegeToPlayer = 25;
-    private EnemyHealth _enemyHealth;
-    //private int _crushDamegeToMe = 50;
+    PlayerHealth _playerHealth;
+    private readonly int _crushDamageToPlayer = 25;
+    EnemyHealth _enemyHealth;
+    private readonly int _crushDamageToMe = 50;
+    private readonly int _lazerDamage = 25;
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _boomSound = GetComponent<AudioSource>();
+        _enemyHealth = GetComponent<EnemyHealth>();
     }
 
     private void Update()
@@ -30,14 +32,14 @@ public class Enemy : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            _boomSound.Play();
-            _playerHealth.PlayerTakeDamage(25);
-            _enemyHealth.EnemyTakeDamage(50);
+            _playerHealth = other.GetComponent<PlayerHealth>();
+            _playerHealth.PlayerTakeDamage(_crushDamageToPlayer);
+            _enemyHealth.EnemyTakeDamage(_crushDamageToMe);
         }
         if (other.CompareTag("PlayerLazer"))
         {
-            _boomSound.Play();
-            Destroy(gameObject,0.1f);
+            //_boomSound.Play();
+            _enemyHealth.EnemyTakeDamage(_lazerDamage);
         }
     }
 }

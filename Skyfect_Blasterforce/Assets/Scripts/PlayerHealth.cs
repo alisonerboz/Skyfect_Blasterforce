@@ -1,15 +1,30 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
+
 public class PlayerHealth : MonoBehaviour
 {
-    private int _myHealth = 100;
+    public int myHealth = 100;
+    private GameObject _canvas;
+    private Text _healthText;
+
+    private void Start()
+    {
+        _canvas = GameObject.Find("Canvas");
+        _healthText = _canvas.GetComponentInChildren<Text>();
+    }
+
+    
+
     public void PlayerTakeDamage(int i)
     {
-        _myHealth -= i;
-        Debug.Log(_myHealth);
-        if (_myHealth <= 0)
+        myHealth -= i;
+        _healthText.text = "Player Health : " + myHealth;
+        if (myHealth <= 0)
         {
-            Debug.Log("Player is Dead");
-            Destroy(gameObject,0.5f);
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<SpriteRenderer>().enabled = false;
+            Destroy(gameObject,1f);
         }
     }
 }

@@ -20,11 +20,15 @@ public class LazerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Limit"))
+        /*if (other.CompareTag("Limit"))
         {
             Debug.Log("Lazer Carpti");
-            Destroy(gameObject);
-        }
+            Destroy(gameObject,0.01f);
+        }*/
+        Debug.Log("Lazer Carpti");
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        Destroy(gameObject,1f);
     }
     
 }

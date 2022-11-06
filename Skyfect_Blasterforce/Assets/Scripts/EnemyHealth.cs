@@ -1,15 +1,24 @@
 using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
-    private int _enemyHealth = 50;
+    public int enemyHealth = 50;
+    private AudioSource _boomSound;
+    private void Start()
+    {
+        _boomSound = GetComponent<AudioSource>();
+    }
+
     public void EnemyTakeDamage(int i)
     {
-        _enemyHealth -= i;
-        Debug.Log(_enemyHealth);
-        if (_enemyHealth <= 0)
+        enemyHealth -= i;
+        Debug.Log("Enemy Health : "+enemyHealth);
+        if (enemyHealth <= 0)
         {
+            _boomSound.Play();
             Debug.Log("Enemy is Dead");
-            Destroy(gameObject,0.5f);
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<SpriteRenderer>().enabled = false;
+            Destroy(gameObject,1f);
         }
     }
 }
