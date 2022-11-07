@@ -1,55 +1,37 @@
-using System;
-using Cysharp.Threading.Tasks;
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
-
 public class GameManager : MonoBehaviour
 {
-    
-    public GameObject enemy;
-    public Vector2 randomPos;
-    public float startTimer;
-    public float instantiateTimer;
-    public float loopTimer;
+    #region Private Variables
+    [SerializeField] private GameObject enemy;//public
+    [SerializeField] private Vector2 randomPos;//public
+    [SerializeField] private float startTimer;//public
+    [SerializeField] private float instantiateTimer;//public
+    [SerializeField] private float loopTimer; //public
+    [SerializeField] private int EnemyValue; //public
     private bool _gameOver=false;
+    #endregion
     void Start()
     {
-        Olustur();
+        StartCoroutine(CreateNewEnemy());
     }
-
-    
-    private async void Olustur()
+    private IEnumerator CreateNewEnemy()
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(startTimer));
+        yield return new WaitForSeconds(startTimer);
         while(true)
         {
-            for(int i=0;i<=10;i++)
+            for(int i=0;i<=EnemyValue;i++)
             {
-                Vector2 vec = new Vector2(Random.Range(-randomPos.x, randomPos.x),4);
+                Vector2 vec = new Vector2(Random.Range(-randomPos.x, randomPos.x),5);
                 Instantiate(enemy, vec, Quaternion.identity);
-                await UniTask.Delay(TimeSpan.FromSeconds(instantiateTimer));
+                yield return new WaitForSeconds(instantiateTimer);
             }
-            await UniTask.Delay(TimeSpan.FromSeconds(loopTimer));
+            yield return new WaitForSeconds(loopTimer);
             if (_gameOver)
             {
                 break;
             }
         }
-        
     }
-    /*
-    public void ScoreArttir(int gelenScore)
-    {
-        score += gelenScore;
-        skor.text = "SKOR : " + score;
-        patla.Play();
-    }
-    public void oyunBitti()
-    {
-
-        skor.text = "Bitti : " + score;
-        
-        oyunBittiKontrol = true;
-
-    }*/
 }

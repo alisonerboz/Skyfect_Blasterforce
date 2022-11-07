@@ -1,32 +1,35 @@
-using System;
-using Cysharp.Threading.Tasks;
+using System.Collections;
 using UnityEngine;
 
 public class LazerShoot : MonoBehaviour
 {
+    #region Private Variables
+    
     private bool _isShooting;
-    public float fireTime;
-    //public float fireCoolDown;
-    public GameObject lazer;
-    public Transform lazerPositionGameObject;
+    [SerializeField] private float fireTime;
+    [SerializeField] private GameObject lazer;
+    [SerializeField] private Transform lazerPositionGameObject;
     private Vector2 _lazerPosition;
-    private void Update()
+
+    #endregion
+    private void Update()//Fixed Update ile yavas calisiyor daha iyisini bulana kadar boyle durdurıyım.
     {
         var position = lazerPositionGameObject.transform.position;
         _lazerPosition = new Vector2(position.x,position.y);
         if (Input.GetMouseButtonDown(0))
         {
             if (_isShooting == false)
-                Shoot();
+                StartCoroutine(Shoot());//Suan Ates Etmiyorsa Tıklandıgında ates etsin.
         }
     }
-    
-    private async void Shoot()
+
+    private IEnumerator Shoot()//Ates Etme Fonksiyonu
     {
         _isShooting = true;
-        await UniTask.Delay(TimeSpan.FromSeconds(fireTime));
+        yield return new WaitForSeconds(fireTime);
         Instantiate(lazer, _lazerPosition, Quaternion.identity);
-        Debug.Log("Ates Etti");
+        
         _isShooting = false;
     }
+     
 }

@@ -1,21 +1,12 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int myHealth = 100;
-    private GameObject _canvas;
-    private Text _healthText;
-
-    private void Start()
-    {
-        _canvas = GameObject.Find("Canvas");
-        _healthText = _canvas.GetComponentInChildren<Text>();
-    }
-
-    
-
+    #region Private Variables
+    [SerializeField] private int myHealth = 100;
+    [SerializeField] private Text _healthText;
+    #endregion
     public void PlayerTakeDamage(int i)
     {
         myHealth -= i;
