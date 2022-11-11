@@ -6,16 +6,28 @@ public class PlayerHealth : MonoBehaviour
     #region Private Variables
     [SerializeField] private int myHealth = 100;
     [SerializeField] private Text _healthText;
-    #endregion
-    public void PlayerTakeDamage(int i)
+	#endregion
+
+	private void OnEnable()
+	{
+        PlayerMovement.OnGotHit += PlayerTakeDamage;
+	}
+	private void OnDisable()
+	{
+		PlayerMovement.OnGotHit -= PlayerTakeDamage;
+	}
+
+	public void PlayerTakeDamage()
     {
-        myHealth -= i;
+        myHealth -= 10;
         _healthText.text = "Player Health : " + myHealth;
         if (myHealth <= 0)
         {
-            GetComponent<Collider2D>().enabled = false;
-            GetComponent<SpriteRenderer>().enabled = false;
-            Destroy(gameObject,1f);
+            Destroy(gameObject);
         }
     }
+    public void PerformDeathSound()
+	{
+        AudioManager.Instance.Play("PlayerDeath");
+	}
 }

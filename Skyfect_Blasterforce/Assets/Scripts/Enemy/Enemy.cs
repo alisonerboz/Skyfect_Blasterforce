@@ -1,14 +1,12 @@
-using System.Collections;
-using UnityEngine.Events;
 using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     #region Events
 
-	#endregion
+    #endregion
 
-	#region Private Variables
-
+    #region Private Variables
+    private int _enemyHealth = 100;
     #endregion
     
 
@@ -21,7 +19,16 @@ public class Enemy : MonoBehaviour
         }
         if (other.CompareTag("PlayerLazer"))
 		{
-            Destroy(gameObject);
+            _enemyHealth -= 50;
+			if (_enemyHealth <= 0)
+			{
+                PerformDeathSound();
+                Destroy(gameObject);
+			}
 		}
     }
+    public void PerformDeathSound()
+	{
+        AudioManager.Instance.Play("EnemyDeath");
+	}
 }

@@ -5,7 +5,6 @@ using PathCreation;
 public class EnemyMovement : MonoBehaviour
 {
 	#region Private Variables
-	//[SerializeField] private GameObject _enemy;
 	[SerializeField] private float _speed = 3f;
 	public PathCreator pathCreator;
 	private EndOfPathInstruction _end;
@@ -13,7 +12,6 @@ public class EnemyMovement : MonoBehaviour
 	#endregion
 
 	#region Properties
-	//public GameObject enemy { get => _enemy; set => _enemy = value; }
 	public float speed { get => _speed; set => _speed = value; }
 	public float dstTravelled { get => _dstTravelled; set => _dstTravelled = value; }
 	public EndOfPathInstruction end { get => _end; set => _end = value; }

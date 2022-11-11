@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7765626205187962184
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6134767294067298892}
-  m_Layer: 0
-  m_Name: LazerLocation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6134767294067298892
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7765626205187962184}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8894879467724637230}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8894879467724637200
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,10 +31,9 @@ Transform:
   m_GameObject: {fileID: 8894879467724637200}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.057192, y: 0.057192, z: 0.38128}
+  m_LocalScale: {x: 0.09820879, y: 0.09820879, z: 0.6547253}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6134767294067298892}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
@@ -110,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d80a76cdb8ee1ea43bf566078b071855, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0d1f16060c145d04a8cc4c71d5046ccc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -402,8 +370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fab7b4aacd37f44c9ad37b91e3f1d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 3
-  _pathCreator: {fileID: 1163493413840511557, guid: b11b0e1c7013912488a531370bf9ee5f, type: 3}
+  _speed: 5
+  pathCreator: {fileID: 0}
 --- !u!114 &6279713551784460163
 MonoBehaviour:
   m_ObjectHideFlags: 0

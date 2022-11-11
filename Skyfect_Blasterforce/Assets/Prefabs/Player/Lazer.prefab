@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7109026088927755824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.06248, y: 0.06248, z: 0.12496}
+  m_LocalScale: {x: 0.19612472, y: 0.19612472, z: 0.39224944}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f7bfa37fba3c748409a7de900bbe99ac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: beee86512c92cd246b6163df785f8ad4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -147,5 +147,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7109026088927755828}
-  lazerSound: {fileID: 0}
   speed: 20
